@@ -85,15 +85,15 @@ WSGI_APPLICATION = 'jobportal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='database-1'),
-        'USER': config('DB_USER', default ='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='postgres'),
-        'HOST': config('DB_HOST', default='database-1.c5yiqiokav9u.eu-north-1.rds.amazonaws.com'),
+        'NAME': config('DB_NAME', default='backend'),
+        'USER': config('DB_USER', default ='backend_user'),
+        'PASSWORD': config('DB_PASSWORD', default='12345'),
+        'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default='5432'),
     }
 }
 
-# Password validation
+# Password validationhost
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
