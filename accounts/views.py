@@ -1,15 +1,25 @@
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import RegisterSerializer, CustomTokenObtainPairSerializer, ProfileSerializer
 from django.contrib.auth import get_user_model
+from .serializers import (
+    JobSeekerRegisterSerializer,
+    JobHirerRegisterSerializer,
+    CustomTokenObtainPairSerializer,
+    ProfileSerializer
+)
 
 CustomUser = get_user_model()
 
-class RegisterView(generics.CreateAPIView):
+class JobSeekerRegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     permission_classes = (AllowAny,)
-    serializer_class = RegisterSerializer
+    serializer_class = JobSeekerRegisterSerializer
+
+class JobHirerRegisterView(generics.CreateAPIView):
+    queryset = CustomUser.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = JobHirerRegisterSerializer
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer

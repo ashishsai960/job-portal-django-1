@@ -82,16 +82,18 @@ WSGI_APPLICATION = 'jobportal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='backend'),
-        'USER': config('DB_USER', default ='backend_user'),
-        'PASSWORD': config('DB_PASSWORD', default='12345'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+        'NAME':'job_portal',
+        'USER':'postgres',
+        'PASSWORD':'7382252042',
+        'HOST':'localhost',
+        'PORT': '5431',
     }
 }
+
 
 # Password validationhost
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -152,6 +154,7 @@ REST_FRAMEWORK = {
 
 # Add this for user authentication
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 # Add these settings to handle media files
 MEDIA_URL = '/media/'

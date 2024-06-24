@@ -22,3 +22,12 @@ class CustomUser(AbstractUser):
     preferred_hourly_pay = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     resume = models.FileField(upload_to='resumes/', null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    
+    # New fields for job hirers
+    company_name = models.CharField(max_length=255, null=True, blank=True)
+    designation = models.CharField(max_length=255, null=True, blank=True)
+    company_description = models.TextField(null=True, blank=True)
+    company_stage = models.CharField(max_length=255, null=True, blank=True)
+    product_service = models.TextField(null=True, blank=True)
+    company_photo = models.ImageField(upload_to='company_photos/', null=True, blank=True)
+    working_email = models.EmailField(default='default@example.com')
