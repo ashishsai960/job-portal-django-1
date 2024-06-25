@@ -35,7 +35,7 @@ class JobHirerRegisterSerializer(serializers.ModelSerializer):
             last_name=validated_data.get('last_name', ''),
             username=validated_data['username'],
             password=validated_data['password'],
-            working_email=validated_data['email'],
+            working_email=validated_data['working_email'],
             phone_number=validated_data.get('phone_number', ''),
             location=validated_data.get('location', ''),
             company_name=validated_data.get('company_name', ''),
