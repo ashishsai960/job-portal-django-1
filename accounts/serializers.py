@@ -1,9 +1,9 @@
+from .models import CustomUser
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 CustomUser = get_user_model()
-
 class JobSeekerRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -26,7 +26,7 @@ class JobSeekerRegisterSerializer(serializers.ModelSerializer):
 class JobHirerRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'username', 'password', 'working_email', 'phone_number', 'location', 'company_name')
+        fields = ('first_name', 'last_name', 'username', 'password', 'working_email', 'phone_number', 'location', 'company_name', 'email')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -36,12 +36,14 @@ class JobHirerRegisterSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             password=validated_data['password'],
             working_email=validated_data['working_email'],
+            email=validated_data['working_email'],  # Use working_email as email
             phone_number=validated_data.get('phone_number', ''),
             location=validated_data.get('location', ''),
             company_name=validated_data.get('company_name', ''),
             account_type='job_hirer'
         )
         return user
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
