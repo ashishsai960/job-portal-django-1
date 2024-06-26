@@ -84,16 +84,18 @@ WSGI_APPLICATION = 'jobportal.wsgi.application'
 
 
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'job_portal',
-        'USER':'postgres',
-        'PASSWORD':'7382252042',
-        'HOST':'localhost',
-        'PORT': '5431',
+        'NAME': config('DB_NAME', default='backend'),
+        'USER': config('DB_USER', default ='backend_user'),
+        'PASSWORD': config('DB_PASSWORD', default='12345'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
     }
 }
+
 
 
 # Password validationhost
