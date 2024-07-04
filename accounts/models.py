@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 
 class CustomUser(AbstractUser):
@@ -31,3 +31,22 @@ class CustomUser(AbstractUser):
     product_service = models.TextField(null=True, blank=True)
     company_photo = models.ImageField(upload_to='company_photos/', null=True, blank=True)
     working_email = models.EmailField(default='default@example.com')
+
+    # Overriding groups and user_permissions fields
+    groups = models.ManyToManyField(
+        Group,
+        related_name='customuser_set',  # Add related_name to avoid conflict
+        blank=True,
+        help_text='The groups this user belongs to.',
+        verbose_name='groups',
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='customuser_set',  # Add related_name to avoid conflict
+        blank=True,
+        help_text='Specific permissions for this user.',
+        verbose_name='user permissions',
+    )
+
+    def __str__(self):
+        return self.username
