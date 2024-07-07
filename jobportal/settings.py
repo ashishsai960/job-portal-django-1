@@ -13,7 +13,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 from decouple import config, Csv
-
+import certifi
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,13 +88,14 @@ WSGI_APPLICATION = 'jobportal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='backend'),
-        'USER': config('DB_USER', default ='backend_user'),
-        'PASSWORD': config('DB_PASSWORD', default='12345'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+        'NAME':'job_portal',
+        'USER':'postgres',
+        'PASSWORD':'7382252042',
+        'HOST':'localhost',
+        'PORT': '5431',
     }
 }
+
 
 
 
@@ -162,3 +163,16 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # Add these settings to handle media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+EMAIL_SSL_CERTFILE = certifi.where()
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = '2021chb1046@iitrpr.ac.in'
+EMAIL_HOST_PASSWORD = 'lnvcwdkesecezudi'
+DEFAULT_FROM_EMAIL = '2021chb1046@iitrpr.ac.in'
+EMAIL_USE_SSL=False
